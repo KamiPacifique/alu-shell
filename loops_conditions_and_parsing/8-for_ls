@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 # This script lists files in the current directory and shows only the part after the first dash
 
-for file in *; do
-  # Only process non-hidden regular files that contain a dash
-  if [[ -f "$file" && "$file" == *-* ]]; then
-    echo "${file#*-}"
-  fi
-done
+list=$(ls)
+for i in $list; do
+	echo "$i" | cut -d '-' -f2
+done	
