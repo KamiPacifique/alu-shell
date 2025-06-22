@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script runs forever and ignores SIGTERM, instead prints a message
+
+# trap SIGTERM and replace it with a custom action
+trap 'echo "I am invincible!!!"' SIGTERM
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
