@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Script that writes its PID to a file and handles signals in a customized way
+
+PID_FILE="/var/run/myscript.pid"
+
+# Write the current process PID to the file
+echo "$$" > "$PID_FILE"
+
+# Handle SIGINT (Ctrl+C)
+trap 'echo "Y U no love me?!"' SIGINT
+
+# Handle SIGTERM (e.g. kill command)
+trap 'echo "I hate the kill command"; rm -f "$PID_FILE"; exit' SIGTERM
+
+# Handle SIGQUIT (kill -3 or kill -s QUIT)
+trap 'rm -f "$PID_FILE"; exit' SIGQUIT
+
+# Infinite loop with message
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
