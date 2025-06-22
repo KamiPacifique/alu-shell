@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script forcefully kills the 7-highlander process using SIGKILL
+
+# shellcheck disable=SC2009
+ps -ef | grep '[7]-highlander' | awk '{print $2}' | xargs -r kill -9
